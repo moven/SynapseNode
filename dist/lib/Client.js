@@ -204,18 +204,18 @@ class Client {
   }
 
   // GET Verify Address
-    verifyAddress(queryParams = {}) {
-      const { address_city, address_country_code, address_postal_code, address_street, address_subdivision } = queryParams;
+  verifyAddress(queryParams = {}) {
+    const { address_city, address_country_code, address_postal_code, address_street, address_subdivision } = queryParams;
 
-      return apiRequests.client[verifyAddress]({
-        address_city,
-        address_country_code,
-        address_postal_code,
-        address_street,
-        address_subdivision,
-        clientInfo: this
-      });
-    }
+    return apiRequests.client[verifyAddress]({
+      address_city,
+      address_country_code,
+      address_postal_code,
+      address_street,
+      address_subdivision,
+      clientInfo: this
+    });
+  }
 
   // GET CRYPTO QUOTES
   getCryptoQuotes() {

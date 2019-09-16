@@ -42,17 +42,14 @@ module.exports[getAllUsers] = ({
 }) => {
   const { host, headers } = clientInfo;
 
-  return axios.get(
-    addQueryParams({
-      // STATIC ENDPOINT
-      originalUrl: `${host}/users`,
-      query,
-      page,
-      per_page,
-      show_refresh_tokens
-    }),
-    { headers }
-  );
+  return axios.get(addQueryParams({
+    // STATIC ENDPOINT
+    originalUrl: `${host}/users`,
+    query,
+    page,
+    per_page,
+    show_refresh_tokens
+  }), { headers });
 };
 
 module.exports[getUser] = ({ user_id, full_dehydrate, headers, clientInfo }) => {
@@ -67,15 +64,12 @@ module.exports[getUser] = ({ user_id, full_dehydrate, headers, clientInfo }) => 
 module.exports[getPlatformTransactions] = ({ page, per_page, clientInfo }) => {
   const { host, headers } = clientInfo;
 
-  return axios.get(
-    addQueryParams({
-      // STATIC ENDPOINT
-      originalUrl: `${host}/trans`,
-      page,
-      per_page
-    }),
-    { headers }
-  );
+  return axios.get(addQueryParams({
+    // STATIC ENDPOINT
+    originalUrl: `${host}/trans`,
+    page,
+    per_page
+  }), { headers });
 };
 
 module.exports[getPlatformNodes] = ({ page, per_page, clientInfo }) => {
@@ -92,7 +86,7 @@ module.exports[getPlatformNodes] = ({ page, per_page, clientInfo }) => {
 
 module.exports[getInstitutions] = ({ clientInfo }) => {
   const { host, headers } = clientInfo;
-  const url = `${host}/institutions`
+  const url = `${host}/institutions`;
 
   return axios.get(url, { headers });
 };
@@ -131,7 +125,7 @@ module.exports[getSubscription] = ({ subscription_id, clientInfo }) => {
   return axios.get(url, { headers });
 };
 
-module.exports[updateSubscription] = ({ subscription_id, bodyParams, clientInfo}) => {
+module.exports[updateSubscription] = ({ subscription_id, bodyParams, clientInfo }) => {
   const { host, headers } = clientInfo;
   const url = `${host}/subscriptions/${subscription_id}`;
   // CHECK IF VALID BODY PARAMS???
