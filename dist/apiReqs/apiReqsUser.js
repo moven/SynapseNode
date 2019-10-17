@@ -72,16 +72,12 @@ module.exports[createNode] = ({ bodyParams, userInfo }) => {
 };
 
 module.exports[verifyAchMfa] = ({ access_token, mfa_answer, userInfo }) => {
-  const { host, headers, id} = userInfo;
+  const { host, headers, id } = userInfo;
 
-  return axios.post(
-    `${host}/users/${id}/nodes`,
-    {
-      access_token,
-      mfa_answer
-    },
-    { headers }
-  );
+  return axios.post(`${host}/users/${id}/nodes`, {
+    access_token,
+    mfa_answer
+  }, { headers });
 };
 
 module.exports[getAllUserNodes] = ({ page, per_page, type, userInfo }) => {
@@ -194,7 +190,7 @@ module.exports[reauthorizeAccount] = ({ node_id, userInfo }) => {
   const url = `${host}/users/${id}/nodes/${node_id}?reauth=yes`;
 
   return axios.patch(url, {}, { headers });
-}
+};
 
 module.exports[updateNode] = ({ node_id, bodyParams, userInfo }) => {
   const { host, headers, id } = userInfo;
@@ -305,37 +301,25 @@ module.exports[shipCard] = ({ node_id, subnet_id, bodyParams, userInfo }) => {
 module.exports[registerNewFingerprint] = ({ refresh_token, userInfo }) => {
   const { host, headers, id } = userInfo;
 
-  return axios.post(
-    `${host}/oauth/${id}`,
-    {
-      refresh_token
-    },
-    { headers }
-  );
+  return axios.post(`${host}/oauth/${id}`, {
+    refresh_token
+  }, { headers });
 };
 
 module.exports[supplyDevice2FA] = ({ device, refresh_token, userInfo }) => {
   const { host, headers, id } = userInfo;
 
-  return axios.post(
-    `${host}/oauth/${id}`,
-    {
-      refresh_token,
-      "phone_number": device
-    },
-    { headers }
-  );
+  return axios.post(`${host}/oauth/${id}`, {
+    refresh_token,
+    "phone_number": device
+  }, { headers });
 };
 
 module.exports[verifyFingerprint2FA] = ({ validation_pin, refresh_token, userInfo }) => {
   const { host, headers, id } = userInfo;
 
-  return axios.post(
-    `${host}/oauth/${id}`,
-    {
-      refresh_token,
-      validation_pin
-    },
-    { headers }
-  );
+  return axios.post(`${host}/oauth/${id}`, {
+    refresh_token,
+    validation_pin
+  }, { headers });
 };

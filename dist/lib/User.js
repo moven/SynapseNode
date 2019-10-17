@@ -95,8 +95,7 @@ class User {
       full_dehydrate: 'no',
       headers: this.headers,
       clientInfo: this.client
-    })
-    .then(({ data }) => {
+    }).then(({ data }) => {
       return data.refresh_token;
     });
   }
@@ -106,8 +105,7 @@ class User {
     return apiRequests.user[_oauthUser]({
       bodyParams,
       userInfo: this
-    })
-    .then(({ data }) => {
+    }).then(({ data }) => {
       this.oauth_key = data.oauth_key;
 
       this.headers = buildHeaders({
@@ -282,8 +280,8 @@ class User {
       node_id,
       userInfo: this
     });
-  }  
-  
+  }
+
   // PATCH UPDATE NODE
   updateNode(node_id, bodyParams) {
     return apiRequests.user[updateNode]({
@@ -432,7 +430,7 @@ class User {
   }
 
   // PATCH SHIP CARD SUBNET
-  shipCard(node_id, subnet_id, bodyParams ={}) {
+  shipCard(node_id, subnet_id, bodyParams = {}) {
     return apiRequests.user[shipCard]({
       node_id,
       subnet_id,
